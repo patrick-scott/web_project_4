@@ -1,5 +1,6 @@
 .profile__info {
   margin-top: 22px;
+  margin-left: 24px;
   display: grid;
   grid-template-areas:
     "name edit"

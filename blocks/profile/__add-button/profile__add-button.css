@@ -5,6 +5,9 @@
   box-sizing: border-box;
   background-color: #000;
   margin-top: 35px;
-
+  z-index: 1;
 }
 
+.profile__add-button:hover {
+  opacity: 0.5;
+}

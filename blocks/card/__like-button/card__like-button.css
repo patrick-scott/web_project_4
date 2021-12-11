@@ -1,0 +1,10 @@
+.card__like-button {
+  grid-area: like-button;
+  align-self: center;
+  margin-right: 18px;
+}
+
+.card__like-button:hover {
+  opacity: 0.5;
+ }
+

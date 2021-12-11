@@ -7,4 +7,10 @@
   grid-area: edit;
   margin-left: 18px;
   margin-top: 15px;
+  z-index: 1;
+}
+
+
+.profile__edit-button:hover {
+  opacity: 0.5;
 }
