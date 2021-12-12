@@ -3,5 +3,10 @@
   padding: 68px 0 60px;
   color: #545454;
   font-size: 18px;
+}
 
+@media screen and (max-width: 900px) {
+  .footer__copyright {
+    margin-left: 19px;
+  }
 }

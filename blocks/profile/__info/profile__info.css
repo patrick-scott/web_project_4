@@ -7,3 +7,11 @@
     "subtitle .";
 }
 
+@media screen and (max-width: 900px) {
+  .profile__info {
+    margin: 0 auto 0;
+    grid-template-areas:
+    "name edit"
+    "subtitle subtitle";
+  }
+}
