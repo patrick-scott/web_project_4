@@ -6,3 +6,11 @@
   max-height: 330px;
   position: relative;
 }
+
+
+@media screen and (max-width: 600px) {
+  .popup__container {
+    max-width: 282px;
+    max-height: 322px;
+  }
+}

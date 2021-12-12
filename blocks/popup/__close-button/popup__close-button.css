@@ -9,3 +9,14 @@
   cursor: pointer;
   z-index: 1;
 }
+
+
+@media screen and (max-width: 600px) {
+  .popup__close-button {
+    top: -50px;
+    right: 0;
+    height: 26px;
+    width: 26px;
+  }
+}
+
