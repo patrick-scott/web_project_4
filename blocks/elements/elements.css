@@ -4,3 +4,18 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 21px 17px;
 }
+
+
+
+@media screen and (max-width: 900px) {
+  .elements {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 19px 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .elements {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
