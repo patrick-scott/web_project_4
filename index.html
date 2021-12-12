@@ -21,17 +21,17 @@
      <section class="profile">
 
       <div class="profile__user">
-          <img class="profile__avatar" src="../images/profile_avatar.jpg" alt="user's profile image">
+          <img class="profile__avatar" src="../images/headshot.png" alt="user's profile image">
           <div class="profile__info">
-            <h1 class="profile__name">Jacques Cousteau</h1>
-            <button class="profile__edit-button">
+            <h1 class="profile__name">Patrick Scott</h1>
+            <button class="profile__edit-button" type="button">
               <img src="../images/edit-button.svg">
             </button>
-            <p class="profile__subtitle">Exploreer</p>
+            <p class="profile__subtitle">Web Developer</p>
           </div>
       </div>
 
-        <button class="profile__add-button">
+        <button class="profile__add-button" type="button">
           <img src="../images/add-button.svg">
         </button>
 
@@ -44,7 +44,9 @@
           <img class="card__image" src="../images/card-1.png">
           <div class="card__info">
             <p class="card__location">Yosemite Valley</p>
-            <img class="card__like-button" src="/images/like-button.svg">
+            <button class="card__like-button" type="button">
+           <img src="/images/like-button.svg" class="card__like-btn-svg">
+            </button>
           </div>
         </div>
         <!-- card #2 -->
@@ -52,7 +54,9 @@
           <img class="card__image" src="../images/card-2.png">
           <div class="card__info">
             <p class="card__location">Lake Louise</p>
-            <img class="card__like-button" src="/images/like-button.svg">
+            <button class="card__like-button" type="button">
+              <img src="/images/like-button.svg">
+            </button>
           </div>
         </div>
         <!-- card #3 -->
@@ -60,7 +64,9 @@
           <img class="card__image" src="../images/card-3.png">
           <div class="card__info">
             <p class="card__location">Bald Mountains</p>
-            <img class="card__like-button" src="/images/like-button.svg">
+            <button class="card__like-button" type="button">
+              <img src="/images/like-button.svg">
+            </button>
           </div>
         </div>
         <!-- card #4 -->
@@ -68,7 +74,9 @@
           <img class="card__image" src="../images/card-4.png">
           <div class="card__info">
             <p class="card__location">Latemar</p>
-            <img class="card__like-button" src="/images/like-button.svg">
+            <button class="card__like-button" type="button">
+              <img src="/images/like-button.svg">
+            </button>
           </div>
         </div>
         <!-- card #5 -->
@@ -76,7 +84,9 @@
           <img class="card__image" src="../images/card-5.png">
           <div class="card__info">
             <p class="card__location">Vanoise National Park</p>
-            <img class="card__like-button" src="/images/like-button.svg">
+            <button class="card__like-button" type="button">
+              <img src="/images/like-button.svg">
+            </button>
           </div>
         </div>
         <!-- card #6 -->
@@ -84,17 +94,43 @@
           <img class="card__image" src="../images/card-6.png">
           <div class="card__info">
             <p class="card__location">Lago di Braies</p>
-            <img class="card__like-button" src="/images/like-button.svg">
+            <button class="card__like-button" type="button">
+              <img src="/images/like-button.svg">
+            </button>
           </div>
         </div>
       </section>
 
+      <!-- footer section  -->
       <footer class="footer">
         <p class="footer__copyright">© 2021 Around The U.S.</p>
       </footer>
 
+      <!-- popup form  -->
+      <div class="popup">
+        <div class="popup__container">
+          <button class="popup__close-button" type="button"></button>
+          <h2 class="popup__title">Edit Profile</h2>
+          <form class="popup__edit-form" name="new">
+            <input
+              type="text"
+              class="popup__input popup__input_type_name"
+              name="name"
+              placeholder="Name"
+            >
+            <input
+              type="text"
+              class="popup__input popup__input_type_description"
+              name="description"
+            >
+            <button class="popup__submit-form-btn" type="submit">Save</button>
+          </form>
+        </div>
+      </div>
+
     </main>
   </div>
+  <script src="../scripts/scripts.js"></script>
 </body>
 </html>
 

@@ -2,9 +2,17 @@
   grid-area: like-button;
   align-self: center;
   margin-right: 18px;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
 }
+
 
 .card__like-button:hover {
   opacity: 0.5;
  }
 
+ /*(
+ .card__like-button:active {
+ }
+*/
