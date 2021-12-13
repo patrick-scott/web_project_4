@@ -1,5 +1,5 @@
-@import url("/vendor/normalize.css"); /* failed to load on github pages */
-@import url("/vendor/fonts/fonts.css"); /* failed to load on github pages */
+@import url("../vendor/normalize.css"); /* failed to load on github pages */
+@import url("../vendor/fonts/fonts.css"); /* failed to load on github pages */
 
 @import url("../blocks/card/card.css");
 @import url("../blocks/card/__image/card__image.css"); /* failed to load on github pages */
