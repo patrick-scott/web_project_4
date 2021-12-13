@@ -1,38 +1,38 @@
-@import url("/vendor/normalize.css");
-@import url("/vendor/fonts/fonts.css");
+@import url("/vendor/normalize.css"); /* failed to load on github pages */
+@import url("/vendor/fonts/fonts.css"); /* failed to load on github pages */
 
 @import url("../blocks/card/card.css");
-@import url("../blocks/card/__image/card__image.css");
-@import url("../blocks/card/__info/card__info.css");
-@import url("../blocks/card/__location/card__location.css");
-@import url("../blocks/card/__like-button/card__like-button.css");
+@import url("../../blocks/card/__image/card__image.css"); /* failed to load on github pages */
+@import url("../blocks/card/__info/card__info.css");/* failed to load on github pages */
+@import url("../blocks/card/__location/card__location.css");/* failed to load on github pages */
+@import url("../blocks/card/__like-button/card__like-button.css");/* failed to load on github pages */
 
 @import url("../blocks/content/content.css");
 
 @import url("../blocks/elements/elements.css");
 
-@import url("../blocks/footer/__copyright/footer__copyright.css");
+@import url("../blocks/footer/__copyright/footer__copyright.css"); /* failed to load on github pages */
 
-@import url("../blocks/header/__logo/header__logo.css");
-@import url("../blocks/header/__line/header__line.css");
+@import url("../blocks/header/__logo/header__logo.css"); /* failed to load on github pages */
+@import url("../blocks/header/__line/header__line.css"); /* failed to load on github pages */
 
 @import url("../blocks/page/page.css");
-@import url("../blocks/page/__content/page__content.css");
+@import url("../blocks/page/__content/page__content.css"); /* failed to load on github pages */
 
 @import url("../blocks/popup/popup.css");
-@import url("../blocks/popup/__is_opened/popup__is_opened.css");
-@import url("../blocks/popup/__container/popup__container.css");
-@import url("../blocks/popup/__title/popup__title.css");
-@import url("../blocks/popup/__input/popup__input.css");
-@import url("../blocks/popup/__submit-form-btn/popup__submit-form-btn.css");
-@import url("../blocks/popup/__edit-form/popup__edit-form.css");
-@import url("../blocks/popup/__close-button/popup__close-button.css");
+@import url("../blocks/popup/__is_opened/popup__is_opened.css"); /* failed to load on github pages */
+@import url("../blocks/popup/__container/popup__container.css"); /* failed to load on github pages */
+@import url("../blocks/popup/__title/popup__title.css"); /* failed to load on github pages */
+@import url("../blocks/popup/__input/popup__input.css"); /* failed to load on github pages */
+@import url("../blocks/popup/__submit-form-btn/popup__submit-form-btn.css"); /* failed to load on github pages */
+@import url("../blocks/popup/__edit-form/popup__edit-form.css"); /* failed to load on github pages */
+@import url("../blocks/popup/__close-button/popup__close-button.css"); /* failed to load on github pages */
 
 @import url("../blocks/profile/profile.css");
-@import url("../blocks/profile/__avatar/profile__avatar.css");
-@import url("../blocks/profile/__edit-button/profile__edit-button.css");
-@import url("../blocks/profile/__add-button/profile__add-button.css");
-@import url("../blocks/profile/__info/profile__info.css");
-@import url("../blocks/profile/__name/profile__name.css");
-@import url("../blocks/profile/__subtitle/profile__subtitle.css");
-@import url("../blocks/profile/__user/profile__user.css");
+@import url("../blocks/profile/__avatar/profile__avatar.css"); /* failed to load on github pages */
+@import url("../blocks/profile/__edit-button/profile__edit-button.css"); /* failed to load on github pages */
+@import url("../blocks/profile/__add-button/profile__add-button.css"); /* failed to load on github pages */
+@import url("../blocks/profile/__info/profile__info.css"); /* failed to load on github pages */
+@import url("../blocks/profile/__name/profile__name.css"); /* failed to load on github pages */
+@import url("../blocks/profile/__subtitle/profile__subtitle.css"); /* failed to load on github pages */
+@import url("../blocks/profile/__user/profile__user.css"); /* failed to load on github pages */
