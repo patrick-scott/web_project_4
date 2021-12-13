@@ -12,12 +12,6 @@
   background-color: #FFF;
 }
 
-@import url("../blocks/card/__image/card__image.css"); /* failed to load on github pages */
-@import url("../blocks/card/__info/card__info.css");/* failed to load on github pages */
-@import url("../blocks/card/__location/card__location.css");/* failed to load on github pages */
-@import url("../blocks/card/__like-button/card__like-button.css");/* failed to load on github pages */
-
-
 
 @media screen and (max-width: 900px) {
   .card {
