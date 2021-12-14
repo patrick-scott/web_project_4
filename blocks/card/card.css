@@ -1,11 +1,6 @@
 .card {
   max-width: 282px;
-  max-height: 361px;
-  /*
-  display: grid;
-  grid-template-areas:
-  "image image"
-  "location like-button"; */
+
   display:flex;
   flex-direction: column;
   border-radius: 15px;

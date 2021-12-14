@@ -1,7 +1,6 @@
 .profile {
   display: flex;
   max-width: 880px;
-  max-height: 120px;
   margin: 40px auto 0;
   justify-content: space-between;
 }
@@ -9,7 +8,7 @@
 @media screen and (max-width: 900px) {
   .profile {
     flex-direction: column;
-    max-height: 100%;
+    margin-top: 42px;
   }
 }
 

@@ -17,5 +17,7 @@
 @media screen and (max-width: 600px) {
   .elements {
     grid-template-columns: repeat(1, 1fr);
+    padding-top: 36px;
+    gap: 20px;
   }
 }

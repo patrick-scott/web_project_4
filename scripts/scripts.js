@@ -3,7 +3,6 @@
 const modalWindow = document.querySelector('.popup');
 
 const editForm = document.querySelector('.popup__edit-form');
-const submitButton = document.querySelector('.popup__submit-form-btn');
 
 const editButton = document.querySelector('.profile__edit-button');
 const closeButton = document.querySelector('.popup__close-button');
@@ -20,13 +19,13 @@ const descriptionInputField = editForm.querySelector('.popup__input_type_descrip
 //write functions to toggle modal visibility & submit button
 
 function toggleModalVisibility () {
-  if (!modalWindow.classList.contains('popup__is_opened')) {
+  if (!modalWindow.classList.contains('popup_opened')) {
     titleInputField.value = profileTitle.textContent;
     descriptionInputField.value = profileDescription.textContent;
   }
 
 
-  modalWindow.classList.toggle('popup__is_opened');
+  modalWindow.classList.toggle('popup_opened');
 
 }
 

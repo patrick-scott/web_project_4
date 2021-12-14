@@ -1,15 +1,15 @@
 # Project 4: Around The U.S.
 
-### Overview
+### Project Description:
+
+The purpose of project 4 was to create a social media webpage that contained a toggable popup modal that allowed users to edit their profile name and description using javascript.
 
 ### technologies used
 * HTML
-* CSS
+* CSS - Grid, Flexbox
 * Javascript
-* VS Code
 * Github
 * Figma
-* Images
 
 ## GitHub Link
 * https://patrick-scott.github.io/web_project_4/

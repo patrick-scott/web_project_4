@@ -1,5 +1,8 @@
 .card__image {
-  max-width: 100%;
+  max-width: 282px;
+  max-height: 282px;
   grid-area: image;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 

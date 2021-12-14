@@ -3,10 +3,9 @@
   background-color: #000;
   height: 50px;
   width: 358px;
-  margin: 0 auto 0;
+  margin: 48px auto 0;
   cursor: pointer;
   font-size: 18px;
-  margin-top: 48px;
   border: none;
   border-radius: 2px;
 }
@@ -17,8 +16,8 @@
 
 @media screen and (max-width: 600px) {
   .popup__submit-form-btn {
-    max-width: 238px;
-    max-height: 46px;
+    width: 238px;
+    height: 46px;
     font-size: 14px;
   }
 }

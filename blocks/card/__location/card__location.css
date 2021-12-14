@@ -3,12 +3,11 @@
   font-size: 24px;
   font-weight: 900;
   grid-area: location;
-  padding-left: 21px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-}
-
-.test-class {
-  position: relative;
+  margin: 0;
+  padding-left: 21px;
+  padding-top: 25px;
+  padding-bottom: 31px;
 }
