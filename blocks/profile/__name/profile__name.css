@@ -7,11 +7,13 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  max-width: 500px;
 }
 
 @media screen and (max-width: 900px) {
   .profile__name {
     padding-bottom: 14px;
+    max-width: 400px;
   }
 }
 

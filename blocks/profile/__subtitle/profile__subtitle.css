@@ -6,11 +6,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  max-width: 500px;
 }
 
 @media screen and (max-width: 900px) {
   .profile__subtitle {
     padding-bottom: 36px;
+    max-width: 400px;
   }
 }
 
