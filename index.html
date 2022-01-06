@@ -1,133 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Practicum Web Dev Project 4</title>
-    <link rel="stylesheet" href="./pages/index.css"/>
-</head>
-<body class="page">
-  <div class="page__content">
-    <!-- header -->
-    <header class="header">
-      <img class="header__logo" src="./images/logo.svg" alt="Around the World logo">
-    </header>
-    <!-- Main content start-->
-    <main class="content">
-
-     <!-- user profile section-->
-     <section class="profile">
-
-      <div class="profile__user">
-          <img class="profile__avatar" src="./images/headshot.png" alt="user's profile image">
-          <div class="profile__info">
-            <h1 class="profile__name">Patrick Scott</h1>
-            <button class="profile__edit-button" type="button"></button>
-            <p class="profile__subtitle">Web Developer</p>
+    <link rel="stylesheet" href="./pages/index.css" />
+  </head>
+  <body class="page">
+    <div class="page__content">
+      <!-- header -->
+      <header class="header">
+        <img
+          class="header__logo"
+          src="./images/logo.svg"
+          alt="Around the World logo"
+        />
+      </header>
+      <!-- Main content start-->
+      <main class="content">
+        <!-- user profile section-->
+        <section class="profile">
+          <div class="profile__user">
+            <img
+              class="profile__avatar"
+              src="./images/headshot.png"
+              alt="user's profile image"
+            />
+            <div class="profile__info">
+              <h1 class="profile__name">Patrick Scott</h1>
+              <button class="profile__edit-button" type="button"></button>
+              <p class="profile__subtitle">Web Developer</p>
+            </div>
           </div>
-      </div>
 
-        <button class="profile__add-button" type="button">
-          <img src="./images/add-button.svg" alt="Add Button">
-        </button>
+          <button class="profile__add-button" type="button">
+            <img src="./images/add-button.svg" alt="Add Button" />
+          </button>
+        </section>
 
-     </section>
+        <!-- user element section-->
+        <section class="elements">
+          <!--
 
-      <!-- user element section-->
-      <section class="elements">
-        <!-- card #1 -->
-        <div class="card">
-          <img class="card__image" src="./images/card-1.png" alt="Image of Yosemite Valley">
-          <div class="card__info">
-            <h2 class="card__location">Yosemite Valley</h2>
-            <button class="card__like-button" type="button">
-              <img src="./images/like-button.svg" alt="Like Button">
-            </button>
+          <div class="card">
+            <img
+              class="card__image"
+              src="./images/card-1.png"
+              alt="Image of Yosemite Valley"
+            />
+            <div class="card__info">
+              <h2 class="card__location">Yosemite Valley</h2>
+              <button class="card__like-button" type="button">
+                <img src="./images/like-button.svg" alt="Like Button" />
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <img
+              class="card__image"
+              src="./images/card-2.png"
+              alt="Image of Lake Louise"
+            />
+            <div class="card__info">
+              <h2 class="card__location">Lake Louise</h2>
+              <button class="card__like-button" type="button">
+                <img src="./images/like-button.svg" alt="Like Button" />
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <img
+              class="card__image"
+              src="./images/card-3.png"
+              alt="Image of the Bald Mountains in North Carolina"
+            />
+            <div class="card__info">
+              <h2 class="card__location">Bald Mountains</h2>
+              <button class="card__like-button" type="button">
+                <img src="./images/like-button.svg" alt="Like Button" />
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <img
+              class="card__image"
+              src="./images/card-4.png"
+              alt="Image of Latemar mountain"
+            />
+            <div class="card__info">
+              <h2 class="card__location">Latemar</h2>
+              <button class="card__like-button" type="button">
+                <img src="./images/like-button.svg" alt="Like Button" />
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <img
+              class="card__image"
+              src="./images/card-5.png"
+              alt="Image of Vanoise National park"
+            />
+            <div class="card__info">
+              <h2 class="card__location">Vanoise National Park</h2>
+              <button class="card__like-button" type="button">
+                <img src="./images/like-button.svg" alt="Like Button" />
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <img
+              class="card__image"
+              src="./images/card-6.png"
+              alt="Image of Lago di Braies"
+            />
+            <div class="card__info">
+              <h2 class="card__location">Lago di Braies</h2>
+              <button class="card__like-button" type="button">
+                <img src="./images/like-button.svg" alt="Like Button" />
+              </button>
+            </div>
+          </div>
+        --></section>
+
+        <!-- footer section  -->
+        <footer class="footer">
+          <p class="footer__copyright">© 2021 Around The U.S.</p>
+        </footer>
+
+        <!-- popup form  -->
+        <div class="popup">
+          <div class="popup__container">
+            <button class="popup__close-button" type="button"></button>
+            <h2 class="popup__title">Edit Profile</h2>
+            <form class="popup__edit-form" name="new">
+              <input
+                type="text"
+                class="popup__input popup__input_type_name"
+                name="name"
+                placeholder="Name"
+              />
+              <input
+                type="text"
+                class="popup__input popup__input_type_description"
+                name="description"
+              />
+              <button class="popup__submit-form-btn" type="submit">Save</button>
+            </form>
           </div>
         </div>
-        <!-- card #2 -->
-        <div class="card">
-          <img class="card__image" src="./images/card-2.png" alt="Image of Lake Louise">
-          <div class="card__info">
-            <h2 class="card__location">Lake Louise</h2>
-            <button class="card__like-button" type="button">
-              <img src="./images/like-button.svg" alt="Like Button">
-            </button>
-          </div>
-        </div>
-        <!-- card #3 -->
-        <div class="card">
-          <img class="card__image" src="./images/card-3.png" alt="Image of the Bald Mountains in North Carolina">
-          <div class="card__info">
-            <h2 class="card__location">Bald Mountains</h2>
-            <button class="card__like-button" type="button">
-              <img src="./images/like-button.svg" alt="Like Button">
-            </button>
-          </div>
-        </div>
-        <!-- card #4 -->
-        <div class="card">
-          <img class="card__image" src="./images/card-4.png" alt="Image of Latemar mountain">
-          <div class="card__info">
-            <h2 class="card__location">Latemar</h2>
-            <button class="card__like-button" type="button">
-              <img src="./images/like-button.svg" alt="Like Button">
-            </button>
-          </div>
-        </div>
-        <!-- card #5 -->
-        <div class="card">
-          <img class="card__image" src="./images/card-5.png" alt="Image of Vanoise National park">
-          <div class="card__info">
-            <h2 class="card__location">Vanoise National Park</h2>
-            <button class="card__like-button" type="button">
-              <img src="./images/like-button.svg" alt="Like Button">
-            </button>
-          </div>
-        </div>
-        <!-- card #6 -->
-        <div class="card">
-          <img class="card__image" src="./images/card-6.png" alt="Image of Lago di Braies">
-          <div class="card__info">
-            <h2 class="card__location">Lago di Braies</h2>
-            <button class="card__like-button" type="button">
-              <img src="./images/like-button.svg" alt="Like Button">
-            </button>
-          </div>
-        </div>
-      </section>
 
-      <!-- footer section  -->
-      <footer class="footer">
-        <p class="footer__copyright">© 2021 Around The U.S.</p>
-      </footer>
-
-      <!-- popup form  -->
-      <div class="popup">
-        <div class="popup__container">
-          <button class="popup__close-button" type="button"></button>
-          <h2 class="popup__title">Edit Profile</h2>
-          <form class="popup__edit-form" name="new">
-            <input
-              type="text"
-              class="popup__input popup__input_type_name"
-              name="name"
-              placeholder="Name"
-            >
-            <input
-              type="text"
-              class="popup__input popup__input_type_description"
-              name="description"
-            >
-            <button class="popup__submit-form-btn" type="submit">Save</button>
-          </form>
-        </div>
-      </div>
-
-    </main>
-  </div>
-  <script src="./scripts/scripts.js"></script>
-</body>
+        <!-- card template -->
+        <template id="card-template">
+          <div class="card">
+            <img class="card__image" />
+            <div class="card__info">
+              <h2 class="card__location"></h2>
+              <button class="card__like-button" type="button">
+                <img src="./images/like-button.svg" alt="Like Button" />
+              </button>
+            </div>
+          </div>
+        </template>
+      </main>
+    </div>
+    <script src="./scripts/scripts.js"></script>
+  </body>
 </html>
-
