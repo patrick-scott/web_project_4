@@ -15,6 +15,9 @@ const descriptionInputField = editForm.querySelector(
   ".popup__input_type_description"
 );
 
+const newCardTemplate = document.querySelector("#card-template").content;
+const elementSection = document.querySelector(".elements");
+
 // connecting functions to elements
 editForm.addEventListener("submit", formSubmitHandler);
 editButton.addEventListener("click", toggleModalVisibility);
@@ -50,43 +53,54 @@ const initialCards = [
   },
 ];
 
-// --Functions--
-// function: toggle modal visibility
+//Functions
+const renderCard = (item, elementSection) => {
+  const newCard = getNewCard(item);
+  elementSection.append(newCard);
+};
 
+const getNewCard = (item) => {
+  const newCard = newCardTemplate.querySelector(".card").cloneNode(true);
+  const likeButton = newCard.querySelector(".card__like-button");
+  const deleteButton = newCard.querySelector(".card__delete-button");
+
+  // add content
+  newCard.querySelector(".card__image").src = item.link;
+  newCard.querySelector(".card__location").textContent = item.name;
+
+  // toggle Like button on off
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("card__like-button-liked");
+  });
+
+  deleteButton.addEventListener("click", () => {
+    // create variable to get the correct card to delete
+    const cardToDelete = deleteButton.closest(".card");
+    // remove card from dom
+    cardToDelete.remove();
+  });
+
+  return newCard;
+};
+
+function formSubmitHandler(evt) {
+  evt.preventDefault();
+  //update name/tile & description
+  profileTitle.textContent = titleInputField.value;
+  profileDescription.textContent = descriptionInputField.value;
+  toggleModalVisibility();
+}
+
+// toggle profile modal visibility
 function toggleModalVisibility() {
   if (!modalWindow.classList.contains("popup_opened")) {
     titleInputField.value = profileTitle.textContent;
     descriptionInputField.value = profileDescription.textContent;
   }
-
   modalWindow.classList.toggle("popup_opened");
 }
 
-// function: submit button
-function formSubmitHandler(evt) {
-  evt.preventDefault();
-
-  profileTitle.textContent = titleInputField.value;
-  profileDescription.textContent = descriptionInputField.value;
-
-  toggleModalVisibility();
-}
-
-// Function: add cards on page load
-window.onload = function () {
-  //code to grab contents of template
-  const newCardTemplate = document.querySelector("#card-template").content;
-  //code to grab .elements class
-  const elementSection = document.querySelector(".elements");
-
-  // for each arrayElement..
-  initialCards.forEach((item) => {
-    // clone the content of the newCardTemplate
-    const newCard = newCardTemplate.querySelector(".card").cloneNode(true);
-    // add content
-    newCard.querySelector(".card__image").src = item.link;
-    newCard.querySelector(".card__location").textContent = item.name;
-    // then append the card to <section class="elements">
-    elementSection.append(newCard);
-  });
-};
+//load initial cards
+initialCards.forEach((item) => {
+  renderCard(item, elementSection);
+});

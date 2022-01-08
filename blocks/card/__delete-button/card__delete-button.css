@@ -1,0 +1,15 @@
+.card__delete-button {
+  grid-area: like-button;
+  align-self: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  z-index: 1;
+}
+
+.card__delete-button:hover {
+  opacity: 0.5;
+}
