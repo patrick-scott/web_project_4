@@ -1,31 +1,39 @@
 // get all relevant elements from the DOM
-
-const modalWindow = document.querySelector(".popup");
-
-const editForm = document.querySelector(".popup__edit-form");
-
+//proile
 const editButton = document.querySelector(".profile__edit-button");
-const closeButton = document.querySelector(".popup__close-button");
-
+const addButton = document.querySelector(".profile__add-button");
 const profileTitle = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__subtitle");
 
-const titleInputField = editForm.querySelector(".popup__input_type_name");
+// Edit Profile modal
+const modalWindow = document.querySelector(".popup");
+const editForm = document.querySelector(".popup__edit-form");
+const closeButton = document.querySelector(".popup__close-button");
+const nameInputField = editForm.querySelector(".popup__input_type_name");
 const descriptionInputField = editForm.querySelector(
   ".popup__input_type_description"
 );
+
+// Add Image modal
+const addNewModal = document.querySelector(".popup-add");
+const closeAddForm = document.querySelector(".popup-add__close-button");
+const addForm = document.querySelector(".popup__add-form");
+const titleInputField = addForm.querySelector(".popup__input_type_title");
+const linkInputField = addForm.querySelector(".popup__input_type_link");
 
 const newCardTemplate = document.querySelector("#card-template").content;
 const elementSection = document.querySelector(".elements");
 
 // connecting functions to elements
 editForm.addEventListener("submit", formSubmitHandler);
+addForm.addEventListener("submit", addFormSubmitHandler);
+
 editButton.addEventListener("click", toggleModalVisibility);
+addButton.addEventListener("click", toggleAddNewlVisibility);
 closeButton.addEventListener("click", toggleModalVisibility);
+closeAddForm.addEventListener("click", toggleAddNewlVisibility);
 
-// --Arrays--
-// initial cards
-
+// Initial Cards Array
 const initialCards = [
   {
     name: "Olympic National Park",
@@ -54,11 +62,13 @@ const initialCards = [
 ];
 
 //Functions
+//render card
 const renderCard = (item, elementSection) => {
   const newCard = getNewCard(item);
   elementSection.append(newCard);
 };
 
+//get card data
 const getNewCard = (item) => {
   const newCard = newCardTemplate.querySelector(".card").cloneNode(true);
   const likeButton = newCard.querySelector(".card__like-button");
@@ -83,21 +93,43 @@ const getNewCard = (item) => {
   return newCard;
 };
 
+//update profile info on form submission
 function formSubmitHandler(evt) {
   evt.preventDefault();
   //update name/tile & description
-  profileTitle.textContent = titleInputField.value;
+  profileTitle.textContent = nameInputField.value;
   profileDescription.textContent = descriptionInputField.value;
   toggleModalVisibility();
+}
+
+//Add New Image Card
+function addFormSubmitHandler(evt) {
+  evt.preventDefault();
+
+  //declare variable for form data
+  const newPlace = {};
+  newPlace.name = titleInputField.value;
+  newPlace.link = linkInputField.value;
+
+  // clone a new card/template
+  renderCard(newPlace, elementSection);
+
+  // close modal
+  toggleAddNewlVisibility();
 }
 
 // toggle profile modal visibility
 function toggleModalVisibility() {
   if (!modalWindow.classList.contains("popup_opened")) {
-    titleInputField.value = profileTitle.textContent;
+    nameInputField.value = profileTitle.textContent;
     descriptionInputField.value = profileDescription.textContent;
   }
   modalWindow.classList.toggle("popup_opened");
+}
+
+// toggle 'Add New Image' modal visibility
+function toggleAddNewlVisibility() {
+  addNewModal.classList.toggle("popup-add_opened");
 }
 
 //load initial cards

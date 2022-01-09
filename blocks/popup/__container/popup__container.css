@@ -6,9 +6,23 @@
   position: relative;
 }
 
-
 @media screen and (max-width: 600px) {
   .popup__container {
+    max-width: 282px;
+  }
+}
+
+/* add new  modal */
+.popup-add__container {
+  background-color: #fff;
+  margin: 34px 36px;
+  border-radius: 10px;
+  max-width: 430px;
+  position: relative;
+}
+
+@media screen and (max-width: 600px) {
+  .popup-add__container {
     max-width: 282px;
   }
 }
