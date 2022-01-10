@@ -14,7 +14,6 @@
   transition: visibility 0s, opacity 0.5s linear;
   visibility: hidden;
   opacity: 0;
-  z-index: 0;
 }
 
 @media screen and (max-width: 600px) {
