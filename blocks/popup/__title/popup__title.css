@@ -8,7 +8,23 @@
 }
 
 @media screen and (max-width: 600px) {
-  .popup__title  {
+  .popup__title {
+    font-size: 18px;
+    padding: 25px 22px 55.5px;
+  }
+}
+
+.popup-add__title {
+  color: #000;
+  margin: 0;
+  padding: 34px 36px 54px;
+  font-size: 24px;
+  line-height: 125%;
+  font-weight: 900;
+}
+
+@media screen and (max-width: 600px) {
+  .popup-add__title {
     font-size: 18px;
     padding: 25px 22px 55.5px;
   }

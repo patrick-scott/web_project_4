@@ -18,7 +18,7 @@ const descriptionInputField = editForm.querySelector(
 // create new card modal
 const addNewModal = document.querySelector(".popup-add");
 const closeAddForm = document.querySelector(".popup-add__close-button");
-const addForm = document.querySelector(".popup__add-form");
+const addForm = document.querySelector(".popup-add__add-form");
 const titleInputField = addForm.querySelector(".popup__input_type_title");
 const linkInputField = addForm.querySelector(".popup__input_type_link");
 

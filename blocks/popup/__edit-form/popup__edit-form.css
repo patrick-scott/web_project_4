@@ -13,7 +13,7 @@
 
 /* Add New popup */
 
-.popup__add-form {
+.popup-add__add-form {
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -21,7 +21,7 @@
 }
 
 @media screen and (max-width: 600px) {
-  .popup__add-form {
+  .popup-add__add-form {
     padding: 0 22px 25px;
   }
 }
