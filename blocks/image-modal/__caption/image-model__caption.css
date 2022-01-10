@@ -1,0 +1,7 @@
+.image-modal__caption {
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  padding: 10px 0;
+  height: 150px;
+}

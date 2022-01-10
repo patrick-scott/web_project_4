@@ -4,5 +4,10 @@
   grid-area: image;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
+  cursor: pointer;
 }
 
+.card__image:hover {
+  opacity: 0.8;
+  transition: 0.2s;
+}

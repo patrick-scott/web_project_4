@@ -1,0 +1,6 @@
+.image-modal__wrapper {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  margin: auto;
+}

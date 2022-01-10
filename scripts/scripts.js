@@ -7,6 +7,7 @@ const profileDescription = document.querySelector(".profile__subtitle");
 
 // Edit Profile modal
 const modalWindow = document.querySelector(".popup");
+const modalContainer = document.querySelector(".popup__container");
 const editForm = document.querySelector(".popup__edit-form");
 const closeButton = document.querySelector(".popup__close-button");
 const nameInputField = editForm.querySelector(".popup__input_type_name");
@@ -14,24 +15,38 @@ const descriptionInputField = editForm.querySelector(
   ".popup__input_type_description"
 );
 
-// Add Image modal
+// create new card modal
 const addNewModal = document.querySelector(".popup-add");
 const closeAddForm = document.querySelector(".popup-add__close-button");
 const addForm = document.querySelector(".popup__add-form");
 const titleInputField = addForm.querySelector(".popup__input_type_title");
 const linkInputField = addForm.querySelector(".popup__input_type_link");
 
+// new card template
 const newCardTemplate = document.querySelector("#card-template").content;
+
+//section that holds cards/images
 const elementSection = document.querySelector(".elements");
+
+// get the image popup modal
+const imageModal = document.querySelector(".image-modal");
+const imageModalWrapper = document.querySelector(".image-modal__wrapper");
+const modalImg = document.querySelector(".image-modal__image");
+const closeImage = document.querySelector(".image-modal__close");
 
 // connecting functions to elements
 editForm.addEventListener("submit", formSubmitHandler);
 addForm.addEventListener("submit", addFormSubmitHandler);
-
 editButton.addEventListener("click", toggleModalVisibility);
 addButton.addEventListener("click", toggleAddNewlVisibility);
 closeButton.addEventListener("click", toggleModalVisibility);
 closeAddForm.addEventListener("click", toggleAddNewlVisibility);
+closeImage.addEventListener("click", () => {
+  //imageModal.style.display = "none";
+  imageModal.classList.toggle("transition-in");
+  imageModalWrapper.classList.toggle("transition-in");
+  //modalImg.classList.toggle("transition-in");
+});
 
 // Initial Cards Array
 const initialCards = [
@@ -73,6 +88,7 @@ const getNewCard = (item) => {
   const newCard = newCardTemplate.querySelector(".card").cloneNode(true);
   const likeButton = newCard.querySelector(".card__like-button");
   const deleteButton = newCard.querySelector(".card__delete-button");
+  const clickedImage = newCard.querySelector(".card__image");
 
   // add content
   newCard.querySelector(".card__image").src = item.link;
@@ -83,11 +99,23 @@ const getNewCard = (item) => {
     likeButton.classList.toggle("card__like-button-liked");
   });
 
+  //delete card
   deleteButton.addEventListener("click", () => {
-    // create variable to get the correct card to delete
-    const cardToDelete = deleteButton.closest(".card");
-    // remove card from dom
-    cardToDelete.remove();
+    newCard.remove();
+  });
+
+  //image popup modal
+  clickedImage.addEventListener("click", () => {
+    imageModal.style.display = "block";
+    //transitions
+    imageModal.classList.toggle("transition-in");
+    imageModalWrapper.classList.toggle("transition-in");
+    //modalImg.classList.toggle("transition-in");
+    const image = document.querySelector(".image-modal__image");
+    const modalCaption = document.querySelector(".image-modal__caption");
+    modalCaption.textContent =
+      newCard.querySelector(".card__location").textContent;
+    image.src = newCard.querySelector(".card__image").src;
   });
 
   return newCard;
@@ -125,6 +153,8 @@ function toggleModalVisibility() {
     descriptionInputField.value = profileDescription.textContent;
   }
   modalWindow.classList.toggle("popup_opened");
+  modalWindow.classList.toggle("transition-in");
+  modalContainer.classList.toggle("transition-in");
 }
 
 // toggle 'Add New Image' modal visibility

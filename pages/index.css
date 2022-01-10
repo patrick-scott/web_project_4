@@ -17,9 +17,11 @@
 @import url("../blocks/header/__logo/header__logo.css");
 @import url("../blocks/header/header.css");
 
-/*
-@import url("../blocks/header/__line/header__line.css");
-*/
+@import url("../blocks/image-modal/image-modal.css");
+@import url("../blocks/image-modal/__caption/image-model__caption.css");
+@import url("../blocks/image-modal/__close/image-model__close.css");
+@import url("../blocks/image-modal/__image/image-modal__image.css");
+@import url("../blocks/image-modal/__wrapper/image-model__wrapper.css");
 
 @import url("../blocks/page/page.css");
 @import url("../blocks/page/__content/page__content.css");
@@ -41,3 +43,5 @@
 @import url("../blocks/profile/__name/profile__name.css");
 @import url("../blocks/profile/__subtitle/profile__subtitle.css");
 @import url("../blocks/profile/__user/profile__user.css");
+
+@import url("../blocks/transition-in/transition-in.css");
