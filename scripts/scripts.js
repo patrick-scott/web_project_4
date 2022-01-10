@@ -19,8 +19,8 @@ const descriptionInputField = editForm.querySelector(
 const addNewModal = document.querySelector(".popup-add");
 const closeAddForm = document.querySelector(".popup-add__close-button");
 const addForm = document.querySelector(".popup-add__add-form");
-const titleInputField = addForm.querySelector(".popup__input_type_title");
-const linkInputField = addForm.querySelector(".popup__input_type_link");
+const titleInputField = addForm.querySelector(".popup-add__input_type_title");
+const linkInputField = addForm.querySelector(".popup-add__input_type_link");
 
 // new card template
 const newCardTemplate = document.querySelector("#card-template").content;
