@@ -1,27 +1,6 @@
 .popup_opened {
   display: flex;
-}
-
-.popup-add_opened {
-  display: flex;
-}
-
-/* animation to ease in transition */
-.popup_opened,
-.popup-add_opened {
-  animation-name: zoom;
-  animation-duration: 0.6s;
-}
-
-@keyframes zoom {
-  from {
-    transition: visibility 0s, opacity 0.5s linear;
-    visibility: hidden;
-    opacity: 0;
-  }
-  to {
-    visibility: visible;
-    opacity: 1;
-    transition: visibility 0s, opacity 0.5s linear;
-  }
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s, opacity 0.5s linear;
 }

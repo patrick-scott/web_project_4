@@ -12,17 +12,19 @@
   }
 }
 
-/* add new  modal */
-.popup-add__container {
-  background-color: #fff;
-  margin: 34px 36px;
-  border-radius: 10px;
-  max-width: 430px;
+.popup__container_type_image-modal {
+  background: none;
   position: relative;
+  max-height: 75vh;
+  max-width: 75vw;
+  margin: 0 auto;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
 }
 
 @media screen and (max-width: 600px) {
-  .popup-add__container {
-    max-width: 282px;
+  .popup__container_type_image-modal {
+    max-width: 75%;
   }
 }

@@ -24,30 +24,9 @@
   }
 }
 
-/* Add New Modal  */
-
-.popup-add__close-button {
-  position: absolute;
-  top: -40px;
-  right: -40px;
-  background: transparent url("../../../images/Close\ Icon.png") center
-    no-repeat;
-  height: 40px;
-  width: 40px;
-  border: none;
-  cursor: pointer;
-  z-index: 1;
-}
-
-.popup-add__close-button:hover {
-  opacity: 0.6;
-}
-
-@media screen and (max-width: 600px) {
-  .popup-add__close-button {
-    top: -50px;
-    right: 0;
-    height: 26px;
-    width: 26px;
-  }
+.popup__close-button_type_image {
+  top: -35px;
+  right: -35px;
+  height: 30px;
+  width: 30px;
 }

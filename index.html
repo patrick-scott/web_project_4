@@ -47,12 +47,15 @@
           <p class="footer__copyright">© 2021 Around The U.S.</p>
         </footer>
 
-        <!-- edit profile popup form  -->
-        <div class="popup">
+        <!-- edit profile popup  -->
+        <div class="popup popup_type_edit-profile">
           <div class="popup__container">
-            <button class="popup__close-button" type="button"></button>
+            <button
+              class="popup__close-button popup__close-button_type_edit"
+              type="button"
+            ></button>
             <h2 class="popup__title">Edit Profile</h2>
-            <form class="popup__edit-form" name="new">
+            <form class="popup__form popup__form_type_edit" name="new">
               <input
                 type="text"
                 class="popup__input popup__input_type_name"
@@ -69,37 +72,43 @@
           </div>
         </div>
 
-        <!-- add image popup form   -->
-        <div class="popup-add">
-          <div class="popup-add__container">
-            <button class="popup-add__close-button" type="button"></button>
-            <h2 class="popup-add__title">New Place</h2>
-            <form class="popup-add__add-form" name="new">
+        <!-- add new card popup -->
+        <div class="popup popup_type_add-card">
+          <div class="popup__container">
+            <button
+              class="popup__close-button popup__close-button_type_add"
+              type="button"
+            ></button>
+            <h2 class="popup__title">New Place</h2>
+            <form class="popup__form popup__form_type_add" name="new">
               <input
                 type="text"
-                class="popup-add__input popup-add__input_type_title"
+                class="popup__input popup__input_type_title"
                 name="title"
                 placeholder="Title"
               />
               <input
                 type="text"
-                class="popup-add__input popup-add__input_type_link"
+                class="popup__input popup__input_type_link"
                 name="link"
                 placeholder="Link"
               />
-              <button class="popup-add__submit-form-btn" type="submit">
+              <button class="popup__submit-form-btn" type="submit">
                 Create
               </button>
             </form>
           </div>
         </div>
 
-        <!-- image modal -->
-        <div class="image-modal">
-          <div class="image-modal__wrapper">
-            <button class="image-modal__close" type="button"></button>
-            <img class="image-modal__image" />
-            <div class="image-modal__caption"></div>
+        <!-- image modal popup -->
+        <div class="popup popup_type_image-modal">
+          <div class="popup__container popup__container_type_image-modal">
+            <button
+              class="popup__close-button popup__close-button_type_image"
+              type="button"
+            ></button>
+            <img class="popup__image" />
+            <p class="popup__image-caption"></p>
           </div>
         </div>
 

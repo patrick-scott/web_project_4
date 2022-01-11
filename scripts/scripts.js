@@ -7,27 +7,30 @@ const profileDescription = document.querySelector(".profile__subtitle");
 //get edit profile elements
 const modalWindow = document.querySelector(".popup");
 const modalContainer = document.querySelector(".popup__container");
-const editForm = document.querySelector(".popup__edit-form");
-const closeButton = document.querySelector(".popup__close-button");
+const editForm = document.querySelector(".popup__form_type_edit");
+const closeButton = document.querySelector(".popup__close-button_type_edit");
 const nameInputField = editForm.querySelector(".popup__input_type_name");
 const descriptionInputField = editForm.querySelector(
   ".popup__input_type_description"
 );
 //get new card elements
-const addNewModal = document.querySelector(".popup-add");
-const closeAddForm = document.querySelector(".popup-add__close-button");
-const addForm = document.querySelector(".popup-add__add-form");
-const titleInputField = addForm.querySelector(".popup-add__input_type_title");
-const linkInputField = addForm.querySelector(".popup-add__input_type_link");
+const addNewModal = document.querySelector(".popup_type_add-card");
+const closeAddForm = document.querySelector(".popup__close-button_type_add");
+const addForm = document.querySelector(".popup__form_type_add");
+const titleInputField = addForm.querySelector(".popup__input_type_title");
+const linkInputField = addForm.querySelector(".popup__input_type_link");
 //get the new card template
 const newCardTemplate = document.querySelector("#card-template").content;
 //get tje section that holds cards/images
 const elementSection = document.querySelector(".elements");
+
 // get the image popup modal
-const imageModal = document.querySelector(".image-modal");
-const imageModalWrapper = document.querySelector(".image-modal__wrapper");
-const modalImg = document.querySelector(".image-modal__image");
-const closeImage = document.querySelector(".image-modal__close");
+const imageModal = document.querySelector(".popup_type_image-modal");
+const imageModalWrapper = document.querySelector(
+  ".popup__container_type_image-modal"
+);
+const modalImg = document.querySelector(".popup__image");
+const closeImage = document.querySelector(".popup__close-button_type_image");
 
 // connecting functions to elements
 editForm.addEventListener("submit", formSubmitHandler);
@@ -45,8 +48,7 @@ closeAddForm.addEventListener("click", () => {
   toggleModalVisibility(addNewModal);
 });
 closeImage.addEventListener("click", () => {
-  imageModal.classList.toggle("transition-in");
-  imageModalWrapper.classList.toggle("transition-in");
+  toggleModalVisibility(imageModal);
 });
 
 // Initial Cards Array
@@ -81,7 +83,7 @@ const initialCards = [
 //render card
 const renderCard = (item, elementSection) => {
   const newCard = getNewCard(item);
-  elementSection.append(newCard);
+  elementSection.prepend(newCard);
 };
 
 //get card data
@@ -98,26 +100,24 @@ const getNewCard = (item) => {
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button-liked");
   });
-
   //delete card
   deleteButton.addEventListener("click", () => {
     newCard.remove();
   });
-
   //image popup modal
   clickedImage.addEventListener("click", () => {
     imageModal.style.display = "block";
     //transitions
-    // toggleModalVisibility(imageModal);
-    // toggleModalVisibility(imageModalWrapper);
-    imageModal.classList.toggle("transition-in");
-    imageModalWrapper.classList.toggle("transition-in");
-    const image = document.querySelector(".image-modal__image");
-    const modalCaption = document.querySelector(".image-modal__caption");
+    toggleModalVisibility(imageModal);
+
+    const image = document.querySelector(".popup__image");
+    const modalCaption = document.querySelector(".popup__image-caption");
     modalCaption.textContent =
       newCard.querySelector(".card__location").textContent;
     image.src = newCard.querySelector(".card__image").src;
+    image.alt = newCard.querySelector(".popup__image-caption").textContent;
   });
+
   return newCard;
 };
 
@@ -154,5 +154,4 @@ function toggleModalVisibility(modal) {
     descriptionInputField.value = profileDescription.textContent;
   }
   modal.classList.toggle("popup_opened");
-  modal.classList.toggle("transition-in");
 }
