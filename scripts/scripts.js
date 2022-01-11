@@ -1,7 +1,7 @@
 // get all relevant elements from the DOM
 //get profile elements
-const editButton = document.querySelector(".profile__edit-button");
-const addButton = document.querySelector(".profile__add-button");
+const editProfileButton = document.querySelector(".profile__edit-button");
+const addCardButton = document.querySelector(".profile__add-button");
 const profileTitle = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__subtitle");
 //get edit profile elements
@@ -21,24 +21,26 @@ const titleInputField = addForm.querySelector(".popup__input_type_title");
 const linkInputField = addForm.querySelector(".popup__input_type_link");
 //get the new card template
 const newCardTemplate = document.querySelector("#card-template").content;
-//get tje section that holds cards/images
+//get section that holds cards/images
 const elementSection = document.querySelector(".elements");
 
-// get the image popup modal
+//get popup elements
+const modalImg = document.querySelector(".popup__image");
+const closeImage = document.querySelector(".popup__close-button_type_image");
+const image = document.querySelector(".popup__image");
+const modalCaption = document.querySelector(".popup__image-caption");
 const imageModal = document.querySelector(".popup_type_image-modal");
 const imageModalWrapper = document.querySelector(
   ".popup__container_type_image-modal"
 );
-const modalImg = document.querySelector(".popup__image");
-const closeImage = document.querySelector(".popup__close-button_type_image");
 
 // connecting functions to elements
 editForm.addEventListener("submit", formSubmitHandler);
 addForm.addEventListener("submit", addFormSubmitHandler);
-editButton.addEventListener("click", () => {
+editProfileButton.addEventListener("click", () => {
   toggleModalVisibility(modalWindow);
 });
-addButton.addEventListener("click", () => {
+addCardButton.addEventListener("click", () => {
   toggleModalVisibility(addNewModal);
 });
 closeButton.addEventListener("click", () => {
@@ -110,12 +112,10 @@ const getNewCard = (item) => {
     //transitions
     toggleModalVisibility(imageModal);
 
-    const image = document.querySelector(".popup__image");
-    const modalCaption = document.querySelector(".popup__image-caption");
     modalCaption.textContent =
       newCard.querySelector(".card__location").textContent;
     image.src = newCard.querySelector(".card__image").src;
-    image.alt = newCard.querySelector(".popup__image-caption").textContent;
+    image.alt = clickedImage.alt;
   });
 
   return newCard;
