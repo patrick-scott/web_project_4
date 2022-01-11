@@ -93,14 +93,17 @@ const getNewCard = (item) => {
   // add content
   newCard.querySelector(".card__image").src = item.link;
   newCard.querySelector(".card__location").textContent = item.name;
+  clickedImage.alt = item.name;
   // toggle Like button on off
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button-liked");
   });
+
   //delete card
   deleteButton.addEventListener("click", () => {
     newCard.remove();
   });
+
   //image popup modal
   clickedImage.addEventListener("click", () => {
     imageModal.style.display = "block";
@@ -109,7 +112,6 @@ const getNewCard = (item) => {
     // toggleModalVisibility(imageModalWrapper);
     imageModal.classList.toggle("transition-in");
     imageModalWrapper.classList.toggle("transition-in");
-
     const image = document.querySelector(".image-modal__image");
     const modalCaption = document.querySelector(".image-modal__caption");
     modalCaption.textContent =
