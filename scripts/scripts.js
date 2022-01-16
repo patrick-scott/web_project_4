@@ -27,7 +27,7 @@ const elementSection = document.querySelector(".elements");
 //get popup elements
 const modalImg = document.querySelector(".popup__image");
 const closeImage = document.querySelector(".popup__close-button_type_image");
-const image = document.querySelector(".popup__image");
+const imagePopup = document.querySelector(".popup__image");
 const modalCaption = document.querySelector(".popup__image-caption");
 const imageModal = document.querySelector(".popup_type_image-modal");
 const imageModalWrapper = document.querySelector(
@@ -53,7 +53,7 @@ closeImage.addEventListener("click", () => {
   toggleModalVisibility(imageModal);
 });
 
-// Initial Cards Array
+// Arrays - Initial cards
 const initialCards = [
   {
     name: "Olympic National Park",
@@ -81,14 +81,13 @@ const initialCards = [
   },
 ];
 
-//Functions
-//render card
+//Function - render card
 const renderCard = (item, elementSection) => {
   const newCard = getNewCard(item);
   elementSection.prepend(newCard);
 };
 
-//get card data
+//Function - get card data
 const getNewCard = (item) => {
   const newCard = newCardTemplate.querySelector(".card").cloneNode(true);
   const likeButton = newCard.querySelector(".card__like-button");
@@ -114,14 +113,14 @@ const getNewCard = (item) => {
 
     modalCaption.textContent =
       newCard.querySelector(".card__location").textContent;
-    image.src = newCard.querySelector(".card__image").src;
-    image.alt = clickedImage.alt;
+    imagePopup.src = newCard.querySelector(".card__image").src;
+    imagePopup.alt = clickedImage.alt;
   });
 
   return newCard;
 };
 
-//update profile info on form submission
+//Function - update profile info on form submission
 function formSubmitHandler(evt) {
   evt.preventDefault();
   //update name/tile & description
@@ -130,7 +129,7 @@ function formSubmitHandler(evt) {
   toggleModalVisibility(modalWindow);
 }
 
-//Add New Image Card
+//Function - Add New Image Card
 function addFormSubmitHandler(evt) {
   evt.preventDefault();
   //declare variable for form data
@@ -147,11 +146,17 @@ initialCards.forEach((item) => {
   renderCard(item, elementSection);
 });
 
-//toggle visibility
+//Function - toggle visibility
 function toggleModalVisibility(modal) {
   if (!modal.classList.contains("popup_opened")) {
-    nameInputField.value = profileTitle.textContent;
-    descriptionInputField.value = profileDescription.textContent;
+    openPropfilePopup(nameInputField, descriptionInputField);
   }
   modal.classList.toggle("popup_opened");
+}
+
+//Function - open profile popup
+function openPropfilePopup(name, description) {
+  // fill in the form fields
+  name.value = profileTitle.textContent;
+  description.value = profileDescription.textContent;
 }
