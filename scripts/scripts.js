@@ -38,10 +38,11 @@ const imageModalWrapper = document.querySelector(
 editForm.addEventListener("submit", formSubmitHandler);
 addForm.addEventListener("submit", addFormSubmitHandler);
 editProfileButton.addEventListener("click", () => {
-  toggleModalVisibility(modalWindow);
+  openPropfilePopup(nameInputField, descriptionInputField);
 });
 addCardButton.addEventListener("click", () => {
   toggleModalVisibility(addNewModal);
+  //
 });
 closeButton.addEventListener("click", () => {
   toggleModalVisibility(modalWindow);
@@ -149,7 +150,6 @@ initialCards.forEach((item) => {
 //Function - toggle visibility
 function toggleModalVisibility(modal) {
   if (!modal.classList.contains("popup_opened")) {
-    openPropfilePopup(nameInputField, descriptionInputField);
   }
   modal.classList.toggle("popup_opened");
 }
@@ -159,4 +159,6 @@ function openPropfilePopup(name, description) {
   // fill in the form fields
   name.value = profileTitle.textContent;
   description.value = profileDescription.textContent;
+  //toggle popup
+  toggleModalVisibility(addNewModal);
 }
