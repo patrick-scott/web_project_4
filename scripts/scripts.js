@@ -42,7 +42,6 @@ editProfileButton.addEventListener("click", () => {
 });
 addCardButton.addEventListener("click", () => {
   toggleModalVisibility(addNewModal);
-  //
 });
 closeButton.addEventListener("click", () => {
   toggleModalVisibility(modalWindow);
@@ -160,5 +159,5 @@ function openPropfilePopup(name, description) {
   name.value = profileTitle.textContent;
   description.value = profileDescription.textContent;
   //toggle popup
-  toggleModalVisibility(addNewModal);
+  toggleModalVisibility(modalWindow);
 }

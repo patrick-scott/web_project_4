@@ -58,20 +58,14 @@
             <form class="popup__form popup__form_type_edit" name="new">
               <input
                 type="text"
-                class="popup__input popup__input_type_name popup__input_type_error"
+                class="popup__input popup__input_type_name"
                 name="name"
                 placeholder="Name"
-                required
-                minlength="2"
-                maxlength="40"
               />
               <input
                 type="text"
-                class="popup__input popup__input_type_description popup__input_type_error"
+                class="popup__input popup__input_type_description"
                 name="description"
-                required
-                minlength="2"
-                maxlength="40"
               />
               <button class="popup__submit-form-btn" type="submit">Save</button>
             </form>
@@ -89,24 +83,17 @@
             <form class="popup__form popup__form_type_add" name="new">
               <input
                 type="text"
-                class="popup__input popup__input_type_title popup__input_type_error"
+                class="popup__input popup__input_type_title"
                 name="title"
                 placeholder="Title"
-                required
-                minlength="1"
-                maxlength="30"
               />
               <input
-                type="url"
-                class="popup__input popup__input_type_link popup__input_type_error"
+                type="text"
+                class="popup__input popup__input_type_link"
                 name="link"
                 placeholder="Link"
-                required
               />
-              <button
-                class="popup__submit-form-btn popup__submit-form-btn_disabled"
-                type="submit"
-              >
+              <button class="popup__submit-form-btn" type="submit">
                 Create
               </button>
             </form>
@@ -143,6 +130,5 @@
       </main>
     </div>
     <script src="./scripts/scripts.js"></script>
-    <script src="./scripts/validate.js"></script>
   </body>
 </html>
