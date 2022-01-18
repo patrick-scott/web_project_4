@@ -38,7 +38,7 @@ const imageModalWrapper = document.querySelector(
 editForm.addEventListener("submit", formSubmitHandler);
 addForm.addEventListener("submit", addFormSubmitHandler);
 editProfileButton.addEventListener("click", () => {
-  openPropfilePopup(nameInputField, descriptionInputField);
+  openProfilePopup(nameInputField, descriptionInputField);
 });
 addCardButton.addEventListener("click", () => {
   toggleModalVisibility(addNewModal);
@@ -148,13 +148,11 @@ initialCards.forEach((item) => {
 
 //Function - toggle visibility
 function toggleModalVisibility(modal) {
-  if (!modal.classList.contains("popup_opened")) {
-  }
   modal.classList.toggle("popup_opened");
 }
 
 //Function - open profile popup
-function openPropfilePopup(name, description) {
+function openProfilePopup(name, description) {
   // fill in the form fields
   name.value = profileTitle.textContent;
   description.value = profileDescription.textContent;
