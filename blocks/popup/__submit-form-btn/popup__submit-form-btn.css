@@ -14,6 +14,9 @@
   opacity: 0.8;
 }
 
+.popup__submit-form-btn_disabled {
+}
+
 @media screen and (max-width: 600px) {
   .popup__submit-form-btn {
     width: 238px;
