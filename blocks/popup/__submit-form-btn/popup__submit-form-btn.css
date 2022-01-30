@@ -14,6 +14,11 @@
   opacity: 0.8;
 }
 
+.popup__submit-form-btn-disabled {
+  cursor: not-allowed;
+  background: rgba(0, 0, 0, 0.8);
+}
+
 @media screen and (max-width: 600px) {
   .popup__submit-form-btn {
     width: 238px;

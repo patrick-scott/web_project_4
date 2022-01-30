@@ -34,7 +34,7 @@ const imageModalWrapper = document.querySelector(
   ".popup__container_type_image-modal"
 );
 
-// connecting functions to elements
+// Event Listeners
 editForm.addEventListener("submit", formSubmitHandler);
 addForm.addEventListener("submit", addFormSubmitHandler);
 editProfileButton.addEventListener("click", () => {
@@ -86,6 +86,26 @@ const renderCard = (item, elementSection) => {
   const newCard = getNewCard(item);
   elementSection.prepend(newCard);
 };
+
+//Function - close on escape button click
+function escButtonClicked(evt, openPopup) {
+  if (openPopup.classList.contains("popup_opened") && evt.key === "Escape") {
+    toggleModalVisibility(openPopup);
+  }
+}
+
+//close when overlay clicked
+const popupOverlayClicked = (evt, openPopup) => {
+  if (
+    evt.target.classList.contains("popup") ||
+    evt.target.classList.contains("popup__container")
+  ) {
+    toggleModalVisibility(openPopup);
+  }
+};
+
+//Function - close when clicking overlay
+function closeOnOverlayClick(evt, openPopup) {}
 
 //Function - get card data
 const getNewCard = (item) => {
@@ -149,6 +169,12 @@ initialCards.forEach((item) => {
 //Function - toggle visibility
 function toggleModalVisibility(modal) {
   modal.classList.toggle("popup_opened");
+  document.addEventListener("keyup", (evt) => {
+    escButtonClicked(evt, modal);
+  });
+  document.addEventListener("click", (evt) => {
+    popupOverlayClicked(evt, modal);
+  });
 }
 
 //Function - open profile popup

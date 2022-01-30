@@ -58,21 +58,30 @@
             <form class="popup__form popup__form_type_edit" name="new">
               <input
                 type="text"
-                class="popup__input popup__input_type_name popup__input_type_error"
+                class="popup__input popup__input_type_name"
                 name="name"
+                id="name"
                 placeholder="Name"
                 required
                 minlength="2"
                 maxlength="40"
               />
+              <span class="popup__input_type_error" id="name-error"
+                >Please fill out this field.</span
+              >
               <input
                 type="text"
-                class="popup__input popup__input_type_description popup__input_type_error"
+                class="popup__input popup__input_type_description"
                 name="description"
+                id="description"
                 required
                 minlength="2"
-                maxlength="40"
+                maxlength="200"
               />
+              <span class="popup__input_type_error" id="description-error"
+                >Please fill out this field.</span
+              >
+
               <button class="popup__submit-form-btn" type="submit">Save</button>
             </form>
           </div>
@@ -89,24 +98,29 @@
             <form class="popup__form popup__form_type_add" name="new">
               <input
                 type="text"
-                class="popup__input popup__input_type_title popup__input_type_error"
+                class="popup__input popup__input_type_title"
                 name="title"
+                id="title"
                 placeholder="Title"
                 required
                 minlength="1"
                 maxlength="30"
               />
+              <span
+                class="popup__input_type_error popup__input_type_error-active"
+                id="title-error"
+              ></span>
               <input
                 type="url"
-                class="popup__input popup__input_type_link popup__input_type_error"
+                class="popup__input popup__input_type_link"
                 name="link"
+                id="link"
                 placeholder="Link"
                 required
               />
-              <button
-                class="popup__submit-form-btn popup__submit-form-btn_disabled"
-                type="submit"
-              >
+              <span class="popup__input_type_error" id="link-error"></span>
+
+              <button class="popup__submit-form-btn" type="submit">
                 Create
               </button>
             </form>
@@ -143,8 +157,7 @@
       </main>
     </div>
     <script src="./scripts/index.js"></script>
-    <!--
+
     <script src="./scripts/validate.js"></script>
-    -->
   </body>
 </html>
