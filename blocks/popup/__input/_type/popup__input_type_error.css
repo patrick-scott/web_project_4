@@ -1,0 +1,12 @@
+.popup__input_type_error {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  color: red;
+  opacity: 0;
+}
+
+.popup__input_type_error-active {
+  opacity: 1;
+}
