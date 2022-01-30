@@ -15,6 +15,10 @@
   opacity: 0;
 }
 
+.popup__input-error {
+  border-bottom-color: red;
+}
+
 .popup__input_type_error-active {
   opacity: 1;
 }
