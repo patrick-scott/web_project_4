@@ -5,10 +5,12 @@ const addCardButton = document.querySelector(".profile__add-button");
 const profileTitle = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__subtitle");
 //get edit profile elements
-const modalWindow = document.querySelector(".popup");
+const profilePopup = document.querySelector(".popup");
 const modalContainer = document.querySelector(".popup__container");
 const editForm = document.querySelector(".popup__form_type_edit");
-const closeButton = document.querySelector(".popup__close-button_type_edit");
+const profileCloseButton = document.querySelector(
+  ".popup__close-button_type_edit"
+);
 const nameInputField = editForm.querySelector(".popup__input_type_name");
 const descriptionInputField = editForm.querySelector(
   ".popup__input_type_description"
@@ -35,22 +37,30 @@ const imageModalWrapper = document.querySelector(
 );
 
 // Event Listeners
-editForm.addEventListener("submit", formSubmitHandler);
-addForm.addEventListener("submit", addFormSubmitHandler);
+editForm.addEventListener("submit", handleProfileFormSubmit);
+addForm.addEventListener("submit", handleNewImageFormSubmit);
 editProfileButton.addEventListener("click", () => {
   openProfilePopup(nameInputField, descriptionInputField);
 });
 addCardButton.addEventListener("click", () => {
   toggleModalVisibility(addNewModal);
 });
-closeButton.addEventListener("click", () => {
-  toggleModalVisibility(modalWindow);
+
+modalImg.addEventListener("click", (evt) => {
+  handleOverlayClick(evt, modalImg);
 });
-closeAddForm.addEventListener("click", () => {
-  toggleModalVisibility(addNewModal);
-});
-closeImage.addEventListener("click", () => {
-  toggleModalVisibility(imageModal);
+
+//close popups on "X" button click
+const popups = document.querySelectorAll(".popup");
+
+popups.forEach((popup) => {
+  popup.addEventListener("mousedown", (evt) => {
+    if (evt.target.classList.contains("popup_opened")) {
+      toggleModalVisibility(popup);
+    } else if (evt.target.classList.contains("popup__close-button")) {
+      toggleModalVisibility(popup);
+    }
+  });
 });
 
 // Arrays - Initial cards
@@ -88,35 +98,34 @@ const renderCard = (item, elementSection) => {
 };
 
 //Function - close on escape button click
-function escButtonClicked(evt, openPopup) {
-  if (openPopup.classList.contains("popup_opened") && evt.key === "Escape") {
-    toggleModalVisibility(openPopup);
+function closeByEscape(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".popup_opened");
+    toggleModalVisibility(openedPopup);
+    document.removeEventListener("keydown", closeByEscape);
   }
 }
 
 //close when overlay clicked
-const popupOverlayClicked = (evt, openPopup) => {
+const handleOverlayClick = (evt, openedPopup) => {
   if (
     evt.target.classList.contains("popup") ||
     evt.target.classList.contains("popup__container")
   ) {
-    toggleModalVisibility(openPopup);
+    toggleModalVisibility(openedPopup);
   }
 };
-
-//Function - close when clicking overlay
-function closeOnOverlayClick(evt, openPopup) {}
 
 //Function - get card data
 const getNewCard = (item) => {
   const newCard = newCardTemplate.querySelector(".card").cloneNode(true);
   const likeButton = newCard.querySelector(".card__like-button");
   const deleteButton = newCard.querySelector(".card__delete-button");
-  const clickedImage = newCard.querySelector(".card__image");
+  const cardImage = newCard.querySelector(".card__image");
   // add content
-  newCard.querySelector(".card__image").src = item.link;
+  cardImage.src = item.link;
   newCard.querySelector(".card__location").textContent = item.name;
-  clickedImage.alt = item.name;
+  cardImage.alt = item.name;
   // toggle Like button on off
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button-liked");
@@ -126,39 +135,43 @@ const getNewCard = (item) => {
     newCard.remove();
   });
   //image popup modal
-  clickedImage.addEventListener("click", () => {
-    imageModal.style.display = "block";
+  cardImage.addEventListener("click", () => {
+    imageModal.classList.toggle("popup_type_image-modal-active");
     //transitions
     toggleModalVisibility(imageModal);
 
-    modalCaption.textContent =
-      newCard.querySelector(".card__location").textContent;
-    imagePopup.src = newCard.querySelector(".card__image").src;
-    imagePopup.alt = clickedImage.alt;
+    modalCaption.textContent = item.name;
+    imagePopup.src = item.link;
+    imagePopup.alt = item.name;
   });
 
   return newCard;
 };
 
 //Function - update profile info on form submission
-function formSubmitHandler(evt) {
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   //update name/tile & description
   profileTitle.textContent = nameInputField.value;
   profileDescription.textContent = descriptionInputField.value;
-  toggleModalVisibility(modalWindow);
+  toggleModalVisibility(profilePopup);
 }
 
 //Function - Add New Image Card
-function addFormSubmitHandler(evt) {
+function handleNewImageFormSubmit(evt) {
   evt.preventDefault();
+
   //declare variable for form data
   const newPlace = {};
   newPlace.name = titleInputField.value;
   newPlace.link = linkInputField.value;
   // clone a new card/template
   renderCard(newPlace, elementSection);
+
   toggleModalVisibility(addNewModal);
+  //clear inputs
+  newPlace.name = "";
+  newPlace.link = "";
 }
 
 //load initial cards
@@ -168,13 +181,23 @@ initialCards.forEach((item) => {
 
 //Function - toggle visibility
 function toggleModalVisibility(modal) {
+  //grab addNewCard elements
+  formFieldInput = addNewModal.querySelector("popup__input");
+  formSubmitButton = addNewModal.querySelector(".popup__submit-form-btn");
+
+  //disable button if inputs are null
+  if (!formFieldInput === null) {
+    formSubmitButton.classList.remove("popup__submit-form-btn-disabled");
+    formSubmitButton.disabled = false;
+  } else {
+    formSubmitButton.classList.add("popup__submit-form-btn-disabled");
+    formSubmitButton.disabled = true;
+  }
+
+  //toggle popup
   modal.classList.toggle("popup_opened");
-  document.addEventListener("keyup", (evt) => {
-    escButtonClicked(evt, modal);
-  });
-  document.addEventListener("click", (evt) => {
-    popupOverlayClicked(evt, modal);
-  });
+
+  document.addEventListener("keydown", closeByEscape);
 }
 
 //Function - open profile popup
@@ -183,5 +206,5 @@ function openProfilePopup(name, description) {
   name.value = profileTitle.textContent;
   description.value = profileDescription.textContent;
   //toggle popup
-  toggleModalVisibility(modalWindow);
+  toggleModalVisibility(profilePopup);
 }

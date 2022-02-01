@@ -25,5 +25,6 @@
   overflow: auto;
 }
 
-.popup__error_visible {
+.popup_type_image-modal-active {
+  display: block;
 }
