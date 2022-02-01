@@ -106,13 +106,6 @@ function closeByEscape(evt) {
   }
 }
 
-//Function - remove active image modal class
-const removeActiveImageClass = (clickedImagePopup) => {
-  if (clickedImagePopup.classList.contains("popup_type_image-modal-active")) {
-    clickedImagePopup.classList.toggle("popup_type_image-modal-active");
-  }
-};
-
 //Function - get card data
 const getNewCard = (item) => {
   const newCard = newCardTemplate.querySelector(".card").cloneNode(true);
