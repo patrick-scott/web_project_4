@@ -21,13 +21,16 @@ const closeAddForm = document.querySelector(".popup__close-button_type_add");
 const addForm = document.querySelector(".popup__form_type_add");
 const titleInputField = addForm.querySelector(".popup__input_type_title");
 const linkInputField = addForm.querySelector(".popup__input_type_link");
+const addFormInput = addNewModal.querySelector("popup__input");
+const addFormSubmitButton = addNewModal.querySelector(
+  ".popup__submit-form-btn"
+);
 //get the new card template
 const newCardTemplate = document.querySelector("#card-template").content;
 //get section that holds cards/images
 const elementSection = document.querySelector(".elements");
 
 //get popup elements
-const modalImg = document.querySelector(".popup__image");
 const closeImage = document.querySelector(".popup__close-button_type_image");
 const imagePopup = document.querySelector(".popup__image");
 const modalCaption = document.querySelector(".popup__image-caption");
@@ -43,11 +46,13 @@ editProfileButton.addEventListener("click", () => {
   openProfilePopup(nameInputField, descriptionInputField);
 });
 addCardButton.addEventListener("click", () => {
+  addFormSubmitButton.classList.add("popup__submit-form-btn-disabled");
+  addFormSubmitButton.disabled = true;
   toggleModalVisibility(addNewModal);
 });
 
-modalImg.addEventListener("click", (evt) => {
-  handleOverlayClick(evt, modalImg);
+imagePopup.addEventListener("click", (evt) => {
+  handleOverlayClick(evt, imagePopup);
 });
 
 //close popups on "X" button click
@@ -102,17 +107,24 @@ function closeByEscape(evt) {
   if (evt.key === "Escape") {
     const openedPopup = document.querySelector(".popup_opened");
     toggleModalVisibility(openedPopup);
-    document.removeEventListener("keydown", closeByEscape);
+    removeActiveImageClass(openedPopup);
   }
 }
 
-//close when overlay clicked
+//Function - close when overlay clicked
 const handleOverlayClick = (evt, openedPopup) => {
   if (
     evt.target.classList.contains("popup") ||
     evt.target.classList.contains("popup__container")
   ) {
     toggleModalVisibility(openedPopup);
+  }
+};
+
+//Function - remove active image modal class
+const removeActiveImageClass = (clickedImagePopup) => {
+  if (clickedImagePopup.classList.contains("popup_type_image-modal-active")) {
+    clickedImagePopup.classList.toggle("popup_type_image-modal-active");
   }
 };
 
@@ -144,7 +156,6 @@ const getNewCard = (item) => {
     imagePopup.src = item.link;
     imagePopup.alt = item.name;
   });
-
   return newCard;
 };
 
@@ -169,9 +180,13 @@ function handleNewImageFormSubmit(evt) {
   renderCard(newPlace, elementSection);
 
   toggleModalVisibility(addNewModal);
-  //clear inputs
-  newPlace.name = "";
-  newPlace.link = "";
+
+  //disbale button
+  addFormSubmitButton.classList.add("popup__submit-form-btn-disabled");
+  addFormSubmitButton.disabled = true;
+
+  //reset form
+  addForm.reset();
 }
 
 //load initial cards
@@ -181,23 +196,14 @@ initialCards.forEach((item) => {
 
 //Function - toggle visibility
 function toggleModalVisibility(modal) {
-  //grab addNewCard elements
-  formFieldInput = addNewModal.querySelector("popup__input");
-  formSubmitButton = addNewModal.querySelector(".popup__submit-form-btn");
-
-  //disable button if inputs are null
-  if (!formFieldInput === null) {
-    formSubmitButton.classList.remove("popup__submit-form-btn-disabled");
-    formSubmitButton.disabled = false;
-  } else {
-    formSubmitButton.classList.add("popup__submit-form-btn-disabled");
-    formSubmitButton.disabled = true;
-  }
-
   //toggle popup
   modal.classList.toggle("popup_opened");
-
-  document.addEventListener("keydown", closeByEscape);
+  //if popup is opened add event listener if opened, remove if not open
+  if (modal.classList.contains("popup_opened")) {
+    document.addEventListener("keydown", closeByEscape);
+  } else {
+    document.removeEventListener("keydown", closeByEscape);
+  }
 }
 
 //Function - open profile popup
