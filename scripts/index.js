@@ -51,10 +51,6 @@ addCardButton.addEventListener("click", () => {
   toggleModalVisibility(addNewModal);
 });
 
-imagePopup.addEventListener("click", (evt) => {
-  handleOverlayClick(evt, imagePopup);
-});
-
 //close popups on "X" button click
 const popups = document.querySelectorAll(".popup");
 
@@ -107,19 +103,8 @@ function closeByEscape(evt) {
   if (evt.key === "Escape") {
     const openedPopup = document.querySelector(".popup_opened");
     toggleModalVisibility(openedPopup);
-    removeActiveImageClass(openedPopup);
   }
 }
-
-//Function - close when overlay clicked
-const handleOverlayClick = (evt, openedPopup) => {
-  if (
-    evt.target.classList.contains("popup") ||
-    evt.target.classList.contains("popup__container")
-  ) {
-    toggleModalVisibility(openedPopup);
-  }
-};
 
 //Function - remove active image modal class
 const removeActiveImageClass = (clickedImagePopup) => {
@@ -148,7 +133,6 @@ const getNewCard = (item) => {
   });
   //image popup modal
   cardImage.addEventListener("click", () => {
-    imageModal.classList.toggle("popup_type_image-modal-active");
     //transitions
     toggleModalVisibility(imageModal);
 
