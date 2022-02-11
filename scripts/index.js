@@ -23,7 +23,7 @@ const popups = document.querySelectorAll(".popup");
 
 /** import modules */
 import Card from "./card.js";
-import { toggleModalVisibility, openProfilePopup } from "./utils.js";
+import { toggleModalVisibility } from "./utils.js";
 import FormValidator from "./formValidator.js";
 
 /**  Event Listeners */
@@ -33,8 +33,7 @@ editProfileButton.addEventListener("click", () => {
   openProfilePopup(nameInputField, descriptionInputField);
 });
 addCardButton.addEventListener("click", () => {
-  const addCardForm = new FormValidator(formSettings, addForm);
-  addCardForm.disableButton();
+  newImageFormValidation.disableButton();
   toggleModalVisibility(addNewModal);
 });
 
@@ -100,11 +99,19 @@ function handleNewImageFormSubmit(evt) {
   toggleModalVisibility(addNewModal);
 
   /** disbale button */
-  addFormSubmitButton.classList.add("popup__submit-form-btn-disabled");
-  addFormSubmitButton.disabled = true;
+  newImageFormValidation.disableButton();
 
   /** reset form */
   addForm.reset();
+}
+
+/** Function - open profile popup */
+function openProfilePopup(name, description) {
+  /** fill in the form fields */
+  name.value = profileTitle.textContent;
+  description.value = profileDescription.textContent;
+  /** toggle popup */
+  toggleModalVisibility(profilePopup);
 }
 
 export const renderCard = (item, elementSection) => {

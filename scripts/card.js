@@ -15,17 +15,17 @@ export default class Card {
     return card;
   }
   /** _privateMethod - toggle Like button on & off */
-  _handleLikeButton(likeButton) {
+  _handleLikeButton = (likeButton) => {
     likeButton.classList.toggle("card__like-button-liked");
-  }
+  };
   /** _privateMethod - delete card */
-  _handleDeleteButton() {
-    //this._element = null;
+  _handleDeleteButton = () => {
     this._element.remove();
-  }
+    this._element = null;
+  };
 
   /** _privateMethod - image popup modal */
-  _handleImagePopup() {
+  _handleImagePopup = () => {
     const imageModal = document.querySelector(".popup_type_image-modal");
     const imagePopup = document.querySelector(".popup__image");
     const modalCaption = document.querySelector(".popup__image-caption");
@@ -34,7 +34,7 @@ export default class Card {
     modalCaption.textContent = this._name;
     imagePopup.src = this._link;
     imagePopup.alt = this._name;
-  }
+  };
 
   _setEventListeners() {
     /** set event listener to handle image popup */
@@ -57,9 +57,6 @@ export default class Card {
   /** public method - Return a fully functional populated card */
   createNewCard() {
     this._element = this._getTemplate();
-    // this._handleLikeButton();
-    // this._handleDeleteButton();
-    // this._handleImagePopup();
     this._setEventListeners();
 
     /** get dome elements */

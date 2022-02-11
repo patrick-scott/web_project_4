@@ -1,6 +1,3 @@
-/** imports */
-import { profileTitle, profileDescription, profilePopup } from "./index.js";
-
 /** Function - toggle visibility */
 export function toggleModalVisibility(modal) {
   /** toggle popup */
@@ -14,18 +11,9 @@ export function toggleModalVisibility(modal) {
 }
 
 /** Function | event - close on escape button click */
-export function closeByEscape(evt) {
+function closeByEscape(evt) {
   if (evt.key === "Escape") {
     const openedPopup = document.querySelector(".popup_opened");
     toggleModalVisibility(openedPopup);
   }
-}
-
-/** Function - open profile popup */
-export function openProfilePopup(name, description) {
-  /** fill in the form fields */
-  name.value = profileTitle.textContent;
-  description.value = profileDescription.textContent;
-  /** toggle popup */
-  toggleModalVisibility(profilePopup);
 }
