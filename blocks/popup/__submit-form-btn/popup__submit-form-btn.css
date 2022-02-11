@@ -10,7 +10,7 @@
   border-radius: 2px;
 }
 
-.popup__submit-form-btn:hover {
+.popup__submit-form-btn:hover:not(:disabled) {
   opacity: 0.8;
 }
 

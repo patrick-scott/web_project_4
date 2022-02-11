@@ -1,4 +1,4 @@
-// get all relevant elements from the DOM
+/**  get all relevant elements from the DOM */
 const editProfileButton = document.querySelector(".profile__edit-button");
 const addCardButton = document.querySelector(".profile__add-button");
 export const editForm = document.querySelector(".popup__form_type_edit");
@@ -12,29 +12,29 @@ export const addForm = document.querySelector(".popup__form_type_add");
 export const addFormSubmitButton = addNewModal.querySelector(
   ".popup__submit-form-btn"
 );
+export const profileTitle = document.querySelector(".profile__name");
+export const profileDescription = document.querySelector(".profile__subtitle");
+export const profilePopup = document.querySelector(".popup");
+const titleInputField = document.querySelector(".popup__input_type_title");
+const linkInputField = document.querySelector(".popup__input_type_link");
 const cardSection = document.querySelector(".elements");
-//close popups on "X" button click
+/** close popups on "X" button click */
 const popups = document.querySelectorAll(".popup");
 
-//import modules
+/** import modules */
 import Card from "./card.js";
-import {
-  toggleModalVisibility,
-  openProfilePopup,
-  handleNewImageFormSubmit,
-  handleProfileFormSubmit,
-} from "./utils.js";
+import { toggleModalVisibility, openProfilePopup } from "./utils.js";
 import FormValidator from "./formValidator.js";
 
-// Event Listeners
+/**  Event Listeners */
 editForm.addEventListener("submit", handleProfileFormSubmit);
 addForm.addEventListener("submit", handleNewImageFormSubmit);
 editProfileButton.addEventListener("click", () => {
   openProfilePopup(nameInputField, descriptionInputField);
 });
 addCardButton.addEventListener("click", () => {
-  addFormSubmitButton.classList.add("popup__submit-form-btn-disabled");
-  addFormSubmitButton.disabled = true;
+  const addCardForm = new FormValidator(formSettings, addForm);
+  addCardForm.disableButton();
   toggleModalVisibility(addNewModal);
 });
 
@@ -48,7 +48,7 @@ popups.forEach((popup) => {
   });
 });
 
-// Arrays - Initial cards
+/**  Arrays - Initial cards */
 const initialCards = [
   {
     name: "Olympic National Park",
@@ -76,18 +76,49 @@ const initialCards = [
   },
 ];
 
+//JUST PASted
+
+/** Function | event - update profile info on form submission */
+function handleProfileFormSubmit(evt) {
+  evt.preventDefault();
+  /** update name/tile & description */
+  profileTitle.textContent = nameInputField.value;
+  profileDescription.textContent = descriptionInputField.value;
+  toggleModalVisibility(profilePopup);
+}
+
+/** Function | event - add new image Card */
+function handleNewImageFormSubmit(evt) {
+  evt.preventDefault();
+
+  /** declare variable for form */
+  const newPlace = {};
+  newPlace.name = titleInputField.value;
+  newPlace.link = linkInputField.value;
+  /** clone a new card/template */
+  renderCard(newPlace, "#card-template");
+  toggleModalVisibility(addNewModal);
+
+  /** disbale button */
+  addFormSubmitButton.classList.add("popup__submit-form-btn-disabled");
+  addFormSubmitButton.disabled = true;
+
+  /** reset form */
+  addForm.reset();
+}
+
 export const renderCard = (item, elementSection) => {
   const card = new Card(item, elementSection);
   const cardElement = card.createNewCard();
   cardSection.prepend(cardElement);
 };
 
-// load inital cards
+/**  load inital cards */
 initialCards.forEach((item) => {
   renderCard(item, "#card-template");
 });
 
-// form Settings
+/**  form Settings */
 const formSettings = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
@@ -97,7 +128,7 @@ const formSettings = {
   errorClass: ".popup__input-error",
 };
 
-// create an instance for each form
+/**  create an instance for each form */
 const newImageFormValidation = new FormValidator(formSettings, addForm);
 newImageFormValidation.enableValidation();
 const editProfileFormValidation = new FormValidator(formSettings, editForm);
