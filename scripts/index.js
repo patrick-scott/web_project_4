@@ -1,142 +1,158 @@
-/**  get all relevant elements from the DOM */
+/** profile elements */
+export const profileTitle = document.querySelector(".profile__name");
+export const profileDescription = document.querySelector(".profile__subtitle");
+export const profilePopup = document.querySelector(".popup");
+/** buttons */
 const editProfileButton = document.querySelector(".profile__edit-button");
 const addCardButton = document.querySelector(".profile__add-button");
+/** popup - types */
+export const editProfilePopup = document.querySelector(
+  ".popup_type_edit-profile"
+);
+export const addImagePopup = document.querySelector(".popup_type_add-card");
+const cardImagePopup = document.querySelector(".popup_type_image-modal");
+/** popup - forms */
 export const editForm = document.querySelector(".popup__form_type_edit");
-
+export const addForm = document.querySelector(".popup__form_type_add");
+/** popup - inputs */
 export const nameInputField = editForm.querySelector(".popup__input_type_name");
 export const descriptionInputField = editForm.querySelector(
   ".popup__input_type_description"
 );
-export const addNewModal = document.querySelector(".popup_type_add-card");
-export const addForm = document.querySelector(".popup__form_type_add");
-export const addFormSubmitButton = addNewModal.querySelector(
+export const titleInputField = addForm.querySelector(
+  ".popup__input_type_title"
+);
+export const linkInputField = addForm.querySelector(".popup__input_type_link");
+/** popup - buttons */
+export const addFormSubmitButton = addImagePopup.querySelector(
   ".popup__submit-form-btn"
 );
-export const profileTitle = document.querySelector(".profile__name");
-export const profileDescription = document.querySelector(".profile__subtitle");
-export const profilePopup = document.querySelector(".popup");
-const titleInputField = document.querySelector(".popup__input_type_title");
-const linkInputField = document.querySelector(".popup__input_type_link");
-const cardSection = document.querySelector(".elements");
-/** close popups on "X" button click */
-const popups = document.querySelectorAll(".popup");
+/** popup - images */
+const popupImage = document.querySelector(".popup__image");
+const modalCaption = document.querySelector(".popup__image-caption");
 
 /** import modules */
-import Card from "./card.js";
-import { toggleModalVisibility } from "./utils.js";
 import FormValidator from "./formValidator.js";
-
-/**  Event Listeners */
-editForm.addEventListener("submit", handleProfileFormSubmit);
-addForm.addEventListener("submit", handleNewImageFormSubmit);
-editProfileButton.addEventListener("click", () => {
-  openProfilePopup(nameInputField, descriptionInputField);
-});
-addCardButton.addEventListener("click", () => {
-  newImageFormValidation.disableButton();
-  toggleModalVisibility(addNewModal);
-});
-
-popups.forEach((popup) => {
-  popup.addEventListener("mousedown", (evt) => {
-    if (evt.target.classList.contains("popup_opened")) {
-      toggleModalVisibility(popup);
-    } else if (evt.target.classList.contains("popup__close-button")) {
-      toggleModalVisibility(popup);
-    }
-  });
-});
-
-/**  Arrays - Initial cards */
-const initialCards = [
-  {
-    name: "Olympic National Park",
-    link: "https://images.unsplash.com/photo-1625229250317-071640d8f9ac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=850&q=80",
-  },
-  {
-    name: "Arches National Park",
-    link: "https://images.unsplash.com/photo-1605999212421-3f0bf43857ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80",
-  },
-  {
-    name: "Glacier National Park",
-    link: "https://images.unsplash.com/photo-1517909568143-3eea286ca180?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80",
-  },
-  {
-    name: "Grand Canyon National Park",
-    link: "https://images.unsplash.com/photo-1564375704710-5d2d049998ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=894&q=80",
-  },
-  {
-    name: "Colorado, USA",
-    link: "https://images.unsplash.com/photo-1423450822265-fcd97e52ecb5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=904&q=80",
-  },
-  {
-    name: "Great Sand Dunes National Park",
-    link: "https://images.unsplash.com/photo-1619408506946-a3caaf4e4d35?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=832&q=80",
-  },
-];
-
-//JUST PASted
-
-/** Function | event - update profile info on form submission */
-function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
-  /** update name/tile & description */
-  profileTitle.textContent = nameInputField.value;
-  profileDescription.textContent = descriptionInputField.value;
-  toggleModalVisibility(profilePopup);
-}
-
-/** Function | event - add new image Card */
-function handleNewImageFormSubmit(evt) {
-  evt.preventDefault();
-
-  /** declare variable for form */
-  const newPlace = {};
-  newPlace.name = titleInputField.value;
-  newPlace.link = linkInputField.value;
-  /** clone a new card/template */
-  renderCard(newPlace, "#card-template");
-  toggleModalVisibility(addNewModal);
-
-  /** disbale button */
-  newImageFormValidation.disableButton();
-
-  /** reset form */
-  addForm.reset();
-}
-
-/** Function - open profile popup */
-function openProfilePopup(name, description) {
-  /** fill in the form fields */
-  name.value = profileTitle.textContent;
-  description.value = profileDescription.textContent;
-  /** toggle popup */
-  toggleModalVisibility(profilePopup);
-}
-
-export const renderCard = (item, elementSection) => {
-  const card = new Card(item, elementSection);
-  const cardElement = card.createNewCard();
-  cardSection.prepend(cardElement);
-};
-
-/**  load inital cards */
-initialCards.forEach((item) => {
-  renderCard(item, "#card-template");
-});
-
-/**  form Settings */
-const formSettings = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__submit-form-btn",
-  inactiveButtonClass: "popup__submit-form-btn-disabled",
-  inputErrorClass: "popup__form-error_active",
-  errorClass: ".popup__input-error",
-};
+import PopupWithForm from "./PopupWithForm.js";
+import PopupWithImage from "./PopupWithImage.js";
+import UserInfo from "./UserInfo.js";
+import Card from "./card.js";
+import Section from "./Section.js";
+import { initialCards, formSettings } from "../utils/constants.js";
 
 /**  create an instance for each form */
 const newImageFormValidation = new FormValidator(formSettings, addForm);
 newImageFormValidation.enableValidation();
 const editProfileFormValidation = new FormValidator(formSettings, editForm);
 editProfileFormValidation.enableValidation();
+
+/** new Popup class - Edit Profile  */
+const editPopup = new PopupWithForm(
+  {
+    handleFormSubmit: (inputValues) => {
+      const formData = new UserInfo({
+        name: inputValues.name,
+        job: inputValues.description,
+      });
+
+      const formDatatatat = formData.getUserInfo();
+      formData.setUserInfo(formDatatatat);
+    },
+  },
+  editProfilePopup
+);
+
+/** new Popup class - Add New Card  */
+const newCardPopup = new PopupWithForm(
+  {
+    handleFormSubmit: (inputValues) => {
+      const newCard = new Card(
+        {
+          handleCardClick: () => {
+            /** transitions */
+            // const deleteButton = newCardElement.querySelector(".card__like-button");
+            // const likeButton = newCardElement.querySelector(".card__like-button");
+            /** set event listener to delete button */
+
+            imagePopup.open();
+            /** add dom elements to popup */
+            popupImage.src = newCard.link;
+            popupImage.alt = newCard.name;
+            modalCaption.textContent = newCard.name;
+          },
+        },
+        inputValues,
+        "#card-template"
+      );
+      /** create new card element */
+      const newCardElement = newCard.createNewCard();
+      /** add event listeners on click evt */
+      newCardElement.addEventListener("click", () => {
+        newCard.handleCardClick();
+      });
+
+      /** add card to section */
+      popupSection.addItems(newCardElement);
+      /** disbale button */
+      newImageFormValidation.disableButton();
+      /** reset form */
+      addForm.reset();
+    },
+  },
+  addImagePopup //css selector
+);
+
+/** new Popup class - Add New Card  */
+const imagePopup = new PopupWithImage(cardImagePopup);
+
+/** set event Listeners for popup forms*/
+editPopup.setEventListeners();
+newCardPopup.setEventListeners();
+imagePopup.setEventListeners();
+
+/** set click event listeners for edit & add buttons*/
+editProfileButton.addEventListener("click", () => {
+  editProfilePopup.classList.add("popup_opened"); //this needs to call editProfile.open(); ?
+  nameInputField.value = profileTitle.textContent;
+  descriptionInputField.value = profileDescription.textContent;
+});
+addCardButton.addEventListener("click", () => {
+  newImageFormValidation.disableButton();
+  addImagePopup.classList.add("popup_opened"); //this needs to call /newCardPopup.open(); ?
+});
+
+/** create new Section class */
+const popupSection = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      const newCard = new Card(
+        {
+          handleCardClick: () => {
+            imagePopup.open();
+            /** add dom elements to popup */
+            popupImage.src = newCard.link;
+            popupImage.alt = newCard.name;
+            modalCaption.textContent = newCard.name;
+          },
+        },
+        item,
+        "#card-template"
+      );
+      const newCardElement = newCard.createNewCard();
+
+      document.addEventListener("click", (evt) => {
+        if (evt.target.classList.contains("card__image")) {
+          newCard.handleCardClick();
+        }
+      });
+
+      /** add card to section */
+      popupSection.addItems(newCardElement);
+    },
+  },
+  ".elements"
+);
+
+/** call renderer function - iterate through array */
+popupSection.renderer();

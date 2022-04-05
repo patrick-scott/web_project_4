@@ -2,6 +2,7 @@
 export function toggleModalVisibility(modal) {
   /** toggle popup */
   modal.classList.toggle("popup_opened");
+
   /** if popup is opened add event listener if opened, remove if not open */
   if (modal.classList.contains("popup_opened")) {
     document.addEventListener("keydown", closeByEscape);
