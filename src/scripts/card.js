@@ -1,3 +1,6 @@
+import trashCanSrc from "../images/trash-can.png";
+import likeButtonSrc from "../images/like-button.svg";
+
 export default class Card {
   constructor({ handleCardClick }, item, newCardTemplate) {
     this.handleCardClick = handleCardClick;
@@ -44,6 +47,15 @@ export default class Card {
     /** get dome elements */
     const cardImage = this._element.querySelector(".card__image");
     const cardLocation = this._element.querySelector(".card__location");
+
+    const trashCanIcon = this._element.querySelector(
+      "#card__delete-button-icon"
+    );
+    trashCanIcon.src = trashCanSrc;
+    const likeButtonIcon = this._element.querySelector(
+      "#card__like-button-icon"
+    );
+    likeButtonIcon.src = likeButtonSrc;
 
     /** add content to new card */
     cardImage.src = this.link;

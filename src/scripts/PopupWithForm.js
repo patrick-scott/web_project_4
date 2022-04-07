@@ -4,7 +4,7 @@ import {
   linkInputField,
   nameInputField,
   descriptionInputField,
-} from "../scripts/index.js";
+} from "../index.js";
 
 const titleInput = document.querySelector(".popup__input_type_title");
 

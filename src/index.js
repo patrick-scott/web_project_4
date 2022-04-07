@@ -1,3 +1,22 @@
+/** image imports */
+import "./styles/index.css";
+import addCardSrc from "./images/add-button.svg";
+import closeIcon from "./images/Close-Icon.png";
+import editProfileIcon from "./images/edit-button.svg";
+import headshotSrc from "./images/headshot.png";
+import likeButtonLiked from "./images/like-button-liked.svg";
+import likeButtonDark from "./images/like-button-dark.svg";
+import logoSrc from "./images/logo.svg";
+/** images connectors*/
+const addCardIcon = document.getElementById("profile__add-button");
+addCardIcon.src = addCardSrc;
+
+const logo = document.getElementById("header__logo");
+logo.src = logoSrc;
+
+const profileAvatar = document.getElementById("profile__avatar");
+profileAvatar.src = headshotSrc;
+
 /** profile elements */
 export const profileTitle = document.querySelector(".profile__name");
 export const profileDescription = document.querySelector(".profile__subtitle");
@@ -32,13 +51,13 @@ const popupImage = document.querySelector(".popup__image");
 const modalCaption = document.querySelector(".popup__image-caption");
 
 /** import modules */
-import FormValidator from "./formValidator.js";
-import PopupWithForm from "./PopupWithForm.js";
-import PopupWithImage from "./PopupWithImage.js";
-import UserInfo from "./UserInfo.js";
-import Card from "./card.js";
-import Section from "./Section.js";
-import { initialCards, formSettings } from "../utils/constants.js";
+import FormValidator from "../src/scripts/formValidator.js";
+import PopupWithForm from "../src/scripts/PopupWithForm.js";
+import PopupWithImage from "../src/scripts/PopupWithImage.js";
+import UserInfo from "../src/scripts/UserInfo.js";
+import Card from "../src/scripts/card.js";
+import Section from "../src/scripts/Section.js";
+import { initialCards, formSettings } from "../src/utils/constants.js";
 
 /**  create an instance for each form */
 const newImageFormValidation = new FormValidator(formSettings, addForm);
@@ -66,29 +85,26 @@ const editPopup = new PopupWithForm(
 const newCardPopup = new PopupWithForm(
   {
     handleFormSubmit: (inputValues) => {
-      const newCard = new Card(
+      const addPopupCard = new Card(
         {
           handleCardClick: () => {
-            /** transitions */
-            // const deleteButton = newCardElement.querySelector(".card__like-button");
-            // const likeButton = newCardElement.querySelector(".card__like-button");
-            /** set event listener to delete button */
-
             imagePopup.open();
             /** add dom elements to popup */
-            popupImage.src = newCard.link;
-            popupImage.alt = newCard.name;
-            modalCaption.textContent = newCard.name;
+            popupImage.src = addPopupCard.link;
+            popupImage.alt = addPopupCard.name;
+            modalCaption.textContent = addPopupCard.name;
           },
         },
         inputValues,
         "#card-template"
       );
       /** create new card element */
-      const newCardElement = newCard.createNewCard();
+      const newCardElement = addPopupCard.createNewCard();
       /** add event listeners on click evt */
-      newCardElement.addEventListener("click", () => {
-        newCard.handleCardClick();
+      document.addEventListener("click", (evt) => {
+        if (evt.target.classList.contains("card__image")) {
+          addPopupCard.handleCardClick();
+        }
       });
 
       /** add card to section */
@@ -146,7 +162,6 @@ const popupSection = new Section(
           newCard.handleCardClick();
         }
       });
-
       /** add card to section */
       popupSection.addItems(newCardElement);
     },

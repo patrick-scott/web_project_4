@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Practicum Web Dev Project 4</title>
-    <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
   </head>
   <body class="page">
     <div class="page__content">
@@ -13,7 +13,7 @@
       <header class="header">
         <img
           class="header__logo"
-          src="./images/logo.svg"
+          id="header__logo"
           alt="Around the World logo"
         />
       </header>
@@ -24,7 +24,7 @@
           <div class="profile__user">
             <img
               class="profile__avatar"
-              src="./images/headshot.png"
+              id="profile__avatar"
               alt="user's profile image"
             />
             <div class="profile__info">
@@ -35,7 +35,7 @@
           </div>
 
           <button class="profile__add-button" type="button">
-            <img src="./images/add-button.svg" alt="Add Button" />
+            <img id="profile__add-button" alt="Add Button" />
           </button>
         </section>
 
@@ -143,7 +143,8 @@
             <button type="button" class="card__delete-button">
               <img
                 class="card__delete-button-icon"
-                src="./images/trash-can.png"
+                id="card__delete-button-icon"
+                src="./images/delete-button.svg"
                 alt="Delete Button"
               />
             </button>
@@ -152,6 +153,7 @@
               <button class="card__like-button" type="button">
                 <img
                   class="card__like-button-icon"
+                  id="card__like-button-icon"
                   src="./images/like-button.svg"
                   alt="Like Button"
                 />
@@ -162,15 +164,17 @@
       </main>
     </div>
 
-    <script type="module" src="./scripts/index.js"></script>
+    <!--
+    <script type="module" src="./index.js"></script>
     <script type="module" src="./scripts/card.js"></script>
     <script type="module" src="./scripts/formValidator.js"></script>
     <script type="module" src="./scripts/utils.js"></script>
-    <!-- new for project 8-->
+
     <script type="module" src="./scripts/Popup.js"></script>
-    <script type="module" src="../scripts/PopupWithForm.js"></script>
+    <script type="module" src="./scripts/PopupWithForm.js"></script>
     <script type="module" src="./scripts/PopupWithImage.js"></script>
     <script type="module" src="./scripts/Section.js"></script>
     <script type="module" src="./scripts/UserInfo.js"></script>
+    -->
   </body>
 </html>
