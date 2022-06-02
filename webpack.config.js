@@ -25,6 +25,7 @@ module.exports = {
   },
   module: {
     rules: [
+      //
       // this is an array of rules
       // add an object containing rules for Babel to it
       {
